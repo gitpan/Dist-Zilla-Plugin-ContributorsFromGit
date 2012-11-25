@@ -1,0 +1,49 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 61c6329617aa6aa0e5b6e34e5d8e7ea09cbc7fc8 Changes
+SHA1 a5897e9d2b28ebe7546896cde1e9a35352e03ca5 INSTALL
+SHA1 05207cbc5971035849c1de2c7cb3babaeaccb6fb LICENSE
+SHA1 8d0b7a7e1413f576168c787ddc00f7899c1cc572 MANIFEST
+SHA1 1045bd771ed3f34d94ec4cbfaab608289388c217 META.json
+SHA1 ee2874a7ca82b872ed003ce1b15a4a2d33739c77 META.yml
+SHA1 d3a881572a95a0169e6394642b152ab95e08d76c Makefile.PL
+SHA1 c8e264642e0bfb107c7d9bb4db4731a306e04207 README
+SHA1 b7de52bc99915722d99c0e82d3d6d72ac0aeb670 dist.ini
+SHA1 2694f12edd293cbf5fd5f3c8d266df4b625a723b lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
+SHA1 a9dc4072b30f53ba69512a49704ccd7b828c6474 t/00-compile.t
+SHA1 97d52d75e60df4bbd42ccab179d7c865f5ce60dd t/000-report-versions-tiny.t
+SHA1 c87421bf2d3498bb43e119f81ded716c1706ebd8 t/author-pod-spell.t
+SHA1 380401bc45403ec45f548fcdefaa0f04bf3662cb t/basic.t
+SHA1 9c3627ff37f4fd5bddc34bf46cf3359eaf76a060 t/release-consistent-version.t
+SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
+SHA1 013a2fa91923596c220ebd108027932a18e7a57f t/release-has-version.t
+SHA1 b6b40c923e42f7044074b4e92124b036609ba834 t/release-no-smart-comments.t
+SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
+SHA1 8d392772f8daa13e19783e0ef19eaa2db670579a t/release-pod-coverage.t
+SHA1 0353d974d3538491ca937a686607f51c7680fbf9 t/release-pod-syntax.t
+SHA1 aa699f7da29f0bd3a2f5f958b9bc49726effb885 t/requires_external.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQEcBAEBAgAGBQJQsefZAAoJEOd5N1CvIgQkZKQH/2hFg7hyQO7SQ3LTaeKvHidW
+15/BMdaKeI5/hMgjahUXXSvhdJp8PHgGlFzD/0NFT/CGDTWqOPZ9k1p154eJ4IY0
+2FMrOyNxzMFrH8P3zSkMKzyXJnpuUIMPgOu6K+axdoj1D0T9PeZPHIZLkJMGrgyT
+sP69gsREZBOtHK7X1VY9mimHcDGFsuJHMWtg82svEtxQJOEv1udMEeMbz0W0n9Vs
+caG1y/PoKMW3VnNzpOZdA4aMjUnSjrhwItzr0dQdAaL6/DvKRNF8OfnsDuNQ6uRA
+w3gMDdpSW6GS+/x1/589B9enQhNuo0/jvPC4Iq+pzS9vn5CedK1amYC/okKBrNs=
+=LGyK
+-----END PGP SIGNATURE-----
