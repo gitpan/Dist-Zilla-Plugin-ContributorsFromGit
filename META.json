@@ -69,14 +69,14 @@
    "provides" : {
       "Dist::Zilla::Plugin::ContributorsFromGit" : {
          "file" : "lib/Dist/Zilla/Plugin/ContributorsFromGit.pm",
-         "version" : "0.001"
+         "version" : "0.002"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "repository" : {}
    },
-   "version" : "0.001",
+   "version" : "0.002",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016001"
@@ -116,6 +116,11 @@
             "class" : "Dist::Zilla::Plugin::Git::NextVersion",
             "name" : "@RSRCHBOY/Git::NextVersion",
             "version" : "2.003"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::ContributorsFromGit",
+            "name" : "@RSRCHBOY/ContributorsFromGit",
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch",
@@ -311,11 +316,6 @@
             "class" : "Dist::Zilla::Plugin::Signature",
             "name" : "@RSRCHBOY/Signature",
             "version" : "1.100930"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::Twitter",
-            "name" : "@RSRCHBOY/Twitter",
-            "version" : "0.017"
          },
          {
             "class" : "Dist::Zilla::Plugin::InstallRelease",

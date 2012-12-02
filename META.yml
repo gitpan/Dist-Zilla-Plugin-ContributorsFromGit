@@ -31,7 +31,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: 0.001
+    version: 0.002
 requires:
   Dist::Zilla::Role::BeforeBuild: 0
   Dist::Zilla::Role::RegisterStash: 0
@@ -46,7 +46,7 @@ requires:
   namespace::autoclean: 0
   perl: 5.006
 resources: {}
-version: 0.001
+version: 0.002
 x_Dist_Zilla:
   perl:
     version: 5.016001
@@ -79,6 +79,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@RSRCHBOY/Git::NextVersion'
       version: 2.003
+    -
+      class: Dist::Zilla::Plugin::ContributorsFromGit
+      name: '@RSRCHBOY/ContributorsFromGit'
+      version: ~
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::CorrectBranch'
@@ -235,10 +239,6 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Signature
       name: '@RSRCHBOY/Signature'
       version: 1.100930
-    -
-      class: Dist::Zilla::Plugin::Twitter
-      name: '@RSRCHBOY/Twitter'
-      version: 0.017
     -
       class: Dist::Zilla::Plugin::InstallRelease
       name: '@RSRCHBOY/InstallRelease'

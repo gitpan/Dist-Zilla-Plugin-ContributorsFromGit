@@ -9,7 +9,7 @@
 #
 package Dist::Zilla::Plugin::ContributorsFromGit;
 {
-  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.001';
+  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.002';
 }
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
@@ -45,8 +45,9 @@ sub before_build {
 
     ### and get our list from git, filtering: "@authors"
     my @contributors = uniq sort
-        grep  { none(@authors) eq $_ }
-        apply { chomp                }
+        grep  { $_ ne 'Your Name <you@example.com>' }
+        grep  { none(@authors) eq $_                }
+        apply { chomp                               }
         `git log --format="%aN <%aE>"`
         ;
 
@@ -66,7 +67,7 @@ __END__
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl zilla
+=for :stopwords Chris Weyl zilla BeforeBuild
 
 =head1 NAME
 
@@ -74,7 +75,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.001 of Dist::Zilla::Plugin::ContributorsFromGit - released November 25, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.002 of Dist::Zilla::Plugin::ContributorsFromGit - released December 02, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -104,6 +105,9 @@ Note that you do not need to have the C<%PodWeaver> stash created; it will be
 added if it is not found.  However, your L<Pod::Weaver> config (aka
 c<weaver.ini>) must include the
 L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
+
+This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
+phase.
 
 =for Pod::Coverage before_build
 
