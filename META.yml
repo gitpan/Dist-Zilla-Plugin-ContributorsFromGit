@@ -4,14 +4,12 @@ author:
   - 'Chris Weyl <cweyl@alumni.drew.edu>'
 build_requires:
   Directory::Scratch: 0
-  Env::Path: 0
   File::Find: 0
   File::Temp: 0
   File::chdir: 0
   Path::Class: 0
   Test::DZil: 0
   Test::More: 0.88
-  Test::Most: 0
   Test::TempDir: 0
   strict: 0
   warnings: 0
@@ -31,11 +29,12 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: 0.002
+    version: 0.003
 requires:
   Dist::Zilla::Role::BeforeBuild: 0
   Dist::Zilla::Role::RegisterStash: 0
   Dist::Zilla::Stash::PodWeaver: 0
+  File::Which: 0
   IPC::System::Simple: 0
   List::AllUtils: 0
   Moose: 0
@@ -46,15 +45,11 @@ requires:
   namespace::autoclean: 0
   perl: 5.006
 resources: {}
-version: 0.002
+version: 0.003
 x_Dist_Zilla:
   perl:
     version: 5.016001
   plugins:
-    -
-      class: Dist::Zilla::Plugin::ContributorsFromGit
-      name: ContributorsFromGit
-      version: ~
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@RSRCHBOY/NextRelease'
@@ -62,23 +57,23 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@RSRCHBOY/@Git/Check'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@RSRCHBOY/@Git/Commit'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@RSRCHBOY/@Git/Tag'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@RSRCHBOY/@Git/Push'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: '@RSRCHBOY/Git::NextVersion'
-      version: 2.003
+      version: 2.005
     -
       class: Dist::Zilla::Plugin::ContributorsFromGit
       name: '@RSRCHBOY/ContributorsFromGit'
@@ -188,6 +183,10 @@ x_Dist_Zilla:
       name: '@RSRCHBOY/NoSmartCommentsTests'
       version: 0.006
     -
+      class: Dist::Zilla::Plugin::Test::Pod::LinkCheck
+      name: '@RSRCHBOY/Test::Pod::LinkCheck'
+      version: 1.001
+    -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@RSRCHBOY/MetaConfig'
       version: 4.300028
@@ -210,7 +209,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@RSRCHBOY/GitHub::Meta'
-      version: 0.27
+      version: 0.29
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@RSRCHBOY/TestRelease'
@@ -230,7 +229,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@RSRCHBOY/GitHub::Update'
-      version: 0.27
+      version: 0.29
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@RSRCHBOY/UploadToCPAN'
@@ -260,13 +259,13 @@ x_Dist_Zilla:
       name: '@RSRCHBOY/ReadmePodInRoot'
       version: 0.120120
     -
+      class: Dist::Zilla::Plugin::CPANFile
+      name: '@RSRCHBOY/CPANFile'
+      version: 4.300028
+    -
       class: Dist::Zilla::Plugin::PodWeaver
       name: '@RSRCHBOY/PodWeaver'
       version: 3.101641
-    -
-      class: Dist::Zilla::Plugin::RequiresExternal
-      name: RequiresExternal
-      version: 1.004
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'

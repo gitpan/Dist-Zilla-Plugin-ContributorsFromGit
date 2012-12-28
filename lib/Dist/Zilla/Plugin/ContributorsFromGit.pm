@@ -9,7 +9,7 @@
 #
 package Dist::Zilla::Plugin::ContributorsFromGit;
 {
-  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.002';
+  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.003';
 }
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
@@ -17,6 +17,7 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 use Moose;
 use namespace::autoclean;
 use autobox::Core;
+use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
 use Syntax::Keyword::Junction 'none';
 
@@ -35,6 +36,15 @@ with
 
 sub before_build {
     my $self = shift @_;
+
+    # skip if we can't find git
+    unless (which 'git') {
+        $self->log('The "git" executable has not been found');
+        return;
+    }
+
+    # XXX we should also check here that we're in a git repo, but I'm going to
+    # leave that for the git stash (when it's not vaporware)
 
     ### get our stash, config...
     my $stash   = $self->zilla->stash_named('%PodWeaver');
@@ -75,7 +85,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.002 of Dist::Zilla::Plugin::ContributorsFromGit - released December 02, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.003 of Dist::Zilla::Plugin::ContributorsFromGit - released December 27, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
