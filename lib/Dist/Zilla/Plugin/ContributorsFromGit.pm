@@ -9,13 +9,14 @@
 #
 package Dist::Zilla::Plugin::ContributorsFromGit;
 {
-  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.003';
+  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.004';
 }
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
 use Moose;
 use namespace::autoclean;
+use MooseX::AttributeShortcuts 0.015;
 use autobox::Core;
 use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
@@ -29,10 +30,30 @@ use aliased 'Dist::Zilla::Stash::PodWeaver';
 with
     'Dist::Zilla::Role::BeforeBuild',
     'Dist::Zilla::Role::RegisterStash',
+    'Dist::Zilla::Role::MetaProvider',
     ;
 
 # debugging...
 #use Smart::Comments '###';
+
+has contributor_list => (
+    is      => 'lazy',
+    isa     => 'ArrayRef[Str]',
+    builder => sub {
+        my $self = shift @_;
+        my @authors = $self->zilla->authors->flatten;
+
+        ### and get our list from git, filtering: "@authors"
+        my @contributors = uniq sort
+            grep  { $_ ne 'Your Name <you@example.com>' }
+            grep  { none(@authors) eq $_                }
+            apply { chomp                               }
+            `git log --format="%aN <%aE>"`
+            ;
+
+        return \@contributors;
+    },
+);
 
 sub before_build {
     my $self = shift @_;
@@ -50,22 +71,19 @@ sub before_build {
     my $stash   = $self->zilla->stash_named('%PodWeaver');
     do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
         unless defined $stash;
-    my $config  = $stash->_config;
-    my @authors = $self->zilla->authors->flatten;
-
-    ### and get our list from git, filtering: "@authors"
-    my @contributors = uniq sort
-        grep  { $_ ne 'Your Name <you@example.com>' }
-        grep  { none(@authors) eq $_                }
-        apply { chomp                               }
-        `git log --format="%aN <%aE>"`
-        ;
+    my $config       = $stash->_config;
+    my @contributors = $self->contributor_list->flatten;
 
     my $i = 0;
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
         for @contributors;
 
     return;
+}
+
+sub metadata {
+    my $self = shift @_;
+    return { 'x_contributors' => $self->contributor_list };
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -85,7 +103,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.003 of Dist::Zilla::Plugin::ContributorsFromGit - released December 27, 2012 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.004 of Dist::Zilla::Plugin::ContributorsFromGit - released February 26, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -119,7 +137,10 @@ L<Contributors|Pod::Weaver::Section::Contributors> section plugin.
 This plugin runs during the L<BeforeBuild|Dist::Zilla::Role::BeforeBuild>
 phase.
 
-=for Pod::Coverage before_build
+The list of contributors is also added to distribution metadata under the custom
+C<x_contributors> key.
+
+=for Pod::Coverage before_build metadata
 
 =head1 SEE ALSO
 
@@ -140,6 +161,10 @@ L<Dist::Zilla::Stash::PodWeaver>
 =head1 AUTHOR
 
 Chris Weyl <cweyl@alumni.drew.edu>
+
+=head1 CONTRIBUTOR
+
+David Golden <dagolden@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

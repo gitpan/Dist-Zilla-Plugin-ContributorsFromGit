@@ -50,6 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Directory::Scratch','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeBuild','any version') };
+eval { $v .= pmver('Dist::Zilla::Role::MetaProvider','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::RegisterStash','any version') };
 eval { $v .= pmver('Dist::Zilla::Stash::PodWeaver','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
@@ -60,6 +61,7 @@ eval { $v .= pmver('File::chdir','any version') };
 eval { $v .= pmver('IPC::System::Simple','any version') };
 eval { $v .= pmver('List::AllUtils','any version') };
 eval { $v .= pmver('Moose','any version') };
+eval { $v .= pmver('MooseX::AttributeShortcuts','0.015') };
 eval { $v .= pmver('Path::Class','any version') };
 eval { $v .= pmver('Pod::Coverage::TrustPod','any version') };
 eval { $v .= pmver('Syntax::Keyword::Junction','any version') };

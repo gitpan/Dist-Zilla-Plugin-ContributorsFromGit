@@ -32,19 +32,21 @@ my %WriteMakefileArgs = (
   "NAME" => "Dist::Zilla::Plugin::ContributorsFromGit",
   "PREREQ_PM" => {
     "Dist::Zilla::Role::BeforeBuild" => 0,
+    "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::RegisterStash" => 0,
     "Dist::Zilla::Stash::PodWeaver" => 0,
     "File::Which" => 0,
     "IPC::System::Simple" => 0,
     "List::AllUtils" => 0,
     "Moose" => 0,
+    "MooseX::AttributeShortcuts" => "0.015",
     "Syntax::Keyword::Junction" => 0,
     "aliased" => 0,
     "autobox::Core" => 0,
     "autodie" => 0,
     "namespace::autoclean" => 0
   },
-  "VERSION" => "0.003",
+  "VERSION" => "0.004",
   "test" => {
     "TESTS" => "t/*.t"
   }

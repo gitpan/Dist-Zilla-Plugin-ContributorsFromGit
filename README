@@ -3,8 +3,8 @@ NAME
     POD from the list of git authors
 
 VERSION
-    This document describes version 0.003 of
-    Dist::Zilla::Plugin::ContributorsFromGit - released December 27, 2012 as
+    This document describes version 0.004 of
+    Dist::Zilla::Plugin::ContributorsFromGit - released February 26, 2013 as
     part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 SYNOPSIS
@@ -34,6 +34,9 @@ OVERVIEW
 
     This plugin runs during the BeforeBuild phase.
 
+    The list of contributors is also added to distribution metadata under
+    the custom "x_contributors" key.
+
 SEE ALSO
     Please see those modules/websites for more information related to this
     module.
@@ -44,6 +47,9 @@ SEE ALSO
 
 AUTHOR
     Chris Weyl <cweyl@alumni.drew.edu>
+
+CONTRIBUTOR
+    David Golden <dagolden@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2012 by Chris Weyl.
