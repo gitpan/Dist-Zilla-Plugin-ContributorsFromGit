@@ -70,14 +70,14 @@
    "provides" : {
       "Dist::Zilla::Plugin::ContributorsFromGit" : {
          "file" : "lib/Dist/Zilla/Plugin/ContributorsFromGit.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "repository" : {}
    },
-   "version" : "0.004",
+   "version" : "0.005",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016002"

@@ -9,7 +9,7 @@
 #
 package Dist::Zilla::Plugin::ContributorsFromGit;
 {
-  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.004';
+  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.005';
 }
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
@@ -83,7 +83,8 @@ sub before_build {
 
 sub metadata {
     my $self = shift @_;
-    return { 'x_contributors' => $self->contributor_list };
+    my $list = $self->contributor_list;
+    return @$list ? { 'x_contributors' => $list } : {};
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -103,7 +104,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.004 of Dist::Zilla::Plugin::ContributorsFromGit - released February 26, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.005 of Dist::Zilla::Plugin::ContributorsFromGit - released February 28, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
