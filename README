@@ -3,8 +3,8 @@ NAME
     POD from the list of git authors
 
 VERSION
-    This document describes version 0.005 of
-    Dist::Zilla::Plugin::ContributorsFromGit - released February 28, 2013 as
+    This document describes version 0.006 of
+    Dist::Zilla::Plugin::ContributorsFromGit - released April 03, 2013 as
     part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 SYNOPSIS
@@ -37,6 +37,10 @@ OVERVIEW
     The list of contributors is also added to distribution metadata under
     the custom "x_contributors" key.
 
+    If you have duplicate contributors because of differences in committer
+    name or email you can use a ".mailmap" file to canonicalize contributor
+    names and emails. See git help shortlog for details.
+
 SEE ALSO
     Please see those modules/websites for more information related to this
     module.
@@ -45,11 +49,28 @@ SEE ALSO
 
     *   Dist::Zilla::Stash::PodWeaver
 
+SOURCE
+    The development version is on github at
+    <http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit> and
+    may be cloned from
+    <git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
+
 AUTHOR
     Chris Weyl <cweyl@alumni.drew.edu>
 
-CONTRIBUTOR
-    David Golden <dagolden@cpan.org>
+CONTRIBUTORS
+    *   David Golden <dagolden@cpan.org>
+
+    *   Randy Stauner <randy@magnificent-tears.com>
+
+    *   Tatsuhiko Miyagawa <miyagawa@bulknews.net>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2012 by Chris Weyl.

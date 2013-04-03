@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.006;
+use 5.008;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -35,6 +35,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::RegisterStash" => 0,
     "Dist::Zilla::Stash::PodWeaver" => 0,
+    "Encode" => 0,
     "File::Which" => 0,
     "IPC::System::Simple" => 0,
     "List::AllUtils" => 0,
@@ -44,9 +45,10 @@ my %WriteMakefileArgs = (
     "aliased" => 0,
     "autobox::Core" => 0,
     "autodie" => 0,
-    "namespace::autoclean" => 0
+    "namespace::autoclean" => 0,
+    "utf8" => 0
   },
-  "VERSION" => "0.005",
+  "VERSION" => "0.006",
   "test" => {
     "TESTS" => "t/*.t"
   }

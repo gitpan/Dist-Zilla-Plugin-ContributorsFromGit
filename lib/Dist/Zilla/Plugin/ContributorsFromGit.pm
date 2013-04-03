@@ -9,11 +9,14 @@
 #
 package Dist::Zilla::Plugin::ContributorsFromGit;
 {
-  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.005';
+  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.006';
 }
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
+use utf8;
+
+use Encode qw(decode_utf8);
 use Moose;
 use namespace::autoclean;
 use MooseX::AttributeShortcuts 0.015;
@@ -47,7 +50,7 @@ has contributor_list => (
         my @contributors = uniq sort
             grep  { $_ ne 'Your Name <you@example.com>' }
             grep  { none(@authors) eq $_                }
-            apply { chomp                               }
+            apply { chomp; $_ = decode_utf8($_)         }
             `git log --format="%aN <%aE>"`
             ;
 
@@ -78,6 +81,16 @@ sub before_build {
     do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
         for @contributors;
 
+    # add contributor names as stopwords
+    $i = 0;
+    my @stopwords = uniq
+        apply { split / /        }
+        apply { /^(.*) <.*$/; $1 }
+        @contributors
+        ;
+    do { $config->{"StopWords.include[$i]"} = $_; $i++ }
+        for @stopwords;
+
     return;
 }
 
@@ -96,7 +109,9 @@ __END__
 
 =encoding utf-8
 
-=for :stopwords Chris Weyl zilla BeforeBuild
+=for :stopwords Chris Weyl David Golden <dagolden@cpan.org> Randy Stauner
+<randy@magnificent-tears.com> Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+zilla BeforeBuild shortlog committer
 
 =head1 NAME
 
@@ -104,7 +119,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.005 of Dist::Zilla::Plugin::ContributorsFromGit - released February 28, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.006 of Dist::Zilla::Plugin::ContributorsFromGit - released April 03, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -143,6 +158,10 @@ C<x_contributors> key.
 
 =for Pod::Coverage before_build metadata
 
+If you have duplicate contributors because of differences in committer name
+or email you can use a C<.mailmap> file to canonicalize contributor names
+and emails.  See L<git help shortlog|git-shortlog(1)> for details.
+
 =head1 SEE ALSO
 
 Please see those modules/websites for more information related to this module.
@@ -159,13 +178,41 @@ L<Dist::Zilla::Stash::PodWeaver>
 
 =back
 
+=head1 SOURCE
+
+The development version is on github at L<http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
+and may be cloned from L<git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
 =head1 AUTHOR
 
 Chris Weyl <cweyl@alumni.drew.edu>
 
-=head1 CONTRIBUTOR
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
 
 David Golden <dagolden@cpan.org>
+
+=item *
+
+Randy Stauner <randy@magnificent-tears.com>
+
+=item *
+
+Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

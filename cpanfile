@@ -2,6 +2,7 @@ requires "Dist::Zilla::Role::BeforeBuild" => "0";
 requires "Dist::Zilla::Role::MetaProvider" => "0";
 requires "Dist::Zilla::Role::RegisterStash" => "0";
 requires "Dist::Zilla::Stash::PodWeaver" => "0";
+requires "Encode" => "0";
 requires "File::Which" => "0";
 requires "IPC::System::Simple" => "0";
 requires "List::AllUtils" => "0";
@@ -12,7 +13,8 @@ requires "aliased" => "0";
 requires "autobox::Core" => "0";
 requires "autodie" => "0";
 requires "namespace::autoclean" => "0";
-requires "perl" => "5.006";
+requires "perl" => "5.008";
+requires "utf8" => "0";
 
 on 'test' => sub {
   requires "Directory::Scratch" => "0";
