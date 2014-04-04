@@ -8,18 +8,22 @@
 #   The GNU Lesser General Public License, Version 2.1, February 1999
 #
 package Dist::Zilla::Plugin::ContributorsFromGit;
-{
-  $Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.006';
+BEGIN {
+  $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
 }
+# git description: 0.006-6-g070d025
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.007';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
 use utf8;
+use v5.10;
 
 use Encode qw(decode_utf8);
 use Moose;
 use namespace::autoclean;
 use MooseX::AttributeShortcuts 0.015;
+use MooseX::Types::Moose ':all';
 use autobox::Core;
 use File::Which 'which';
 use List::AllUtils qw{ apply max uniq };
@@ -47,14 +51,49 @@ has contributor_list => (
         my @authors = $self->zilla->authors->flatten;
 
         ### and get our list from git, filtering: "@authors"
-        my @contributors = uniq sort
+        my @contributors = uniq
+            map   { $self->author_emails->{$_} // $_    }
             grep  { $_ ne 'Your Name <you@example.com>' }
             grep  { none(@authors) eq $_                }
-            apply { chomp; $_ = decode_utf8($_)         }
-            `git log --format="%aN <%aE>"`
+            apply { chomp; s/\s*\d+\s*//; $_ = decode_utf8($_) }
+            `git shortlog -s -e`
             ;
 
         return \@contributors;
+    },
+);
+
+
+has author_emails => (
+    is       => 'lazy',
+    isa      => HashRef[Str],
+    init_arg => undef,
+
+    builder => sub {
+
+        state $mapping = {
+            'Chris Weyl <rsrchboy@cpan.org>' => [
+                'Chris Weyl <cweyl@alumni.drew.edu>',
+                'Chris Weyl <cweyl@campusexplorer.com>',
+                'Chris Weyl <chris.weyl@wps.io>',
+                'Chris Weyl <cweyl@whitepointstarllc.com>',
+            ],
+
+            # here's where you'd add your mapping :)
+        };
+
+        my $_map_it = sub {
+            my ($canonical, @alternates) = @_;
+
+            return ( map { $_ => $canonical } @alternates );
+        };
+
+        state $map = {
+            map { $_map_it->($_ => $mapping->{$_}->flatten) }
+            $mapping->keys->flatten
+        };
+
+        return $map;
     },
 );
 
@@ -107,11 +146,11 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
-=for :stopwords Chris Weyl David Golden <dagolden@cpan.org> Randy Stauner
-<randy@magnificent-tears.com> Tatsuhiko Miyagawa <miyagawa@bulknews.net>
-zilla BeforeBuild shortlog committer
+=for :stopwords Chris Weyl David Golden Graham Knop Randy Stauner Tatsuhiko Miyagawa
+<dagolden@cpan.org> <haarg@haarg.org> <randy@magnificent-tears.com>
+<miyagawa@bulknews.net> zilla BeforeBuild metacpan shortlog committer
 
 =head1 NAME
 
@@ -119,7 +158,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.006 of Dist::Zilla::Plugin::ContributorsFromGit - released April 03, 2013 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.007 of Dist::Zilla::Plugin::ContributorsFromGit - released April 03, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -155,6 +194,27 @@ phase.
 
 The list of contributors is also added to distribution metadata under the custom
 C<x_contributors> key.
+
+=head1 ATTRIBUTES
+
+=head2 author_emails
+
+This is an hash of additional emails that may be found from time to time in
+git commit logs mapped back to the author's 'canonical' author email.
+Generally speaking, the 'canonical email' will be the author's C<@cpan.org>
+address, so that C<metacpan> may properly attribute contributions.
+
+e.g.
+
+    {
+        'Chris Weyl <cweyl@alumni.drew.edu>' => 'Chris Weyl <rsrchboy@cpan.org>',
+        'Chris Weyl <chris.weyl@wps.io>'     => 'Chris Weyl <rsrchboy@cpan.org>',
+        ...
+    }
+
+Note that this attribute is *read-only*; B<please> fork and send a pull
+request if you'd like to add additional mappings.  This is highly
+encouraged. :)
 
 =for Pod::Coverage before_build metadata
 
@@ -203,6 +263,10 @@ Chris Weyl <cweyl@alumni.drew.edu>
 =item *
 
 David Golden <dagolden@cpan.org>
+
+=item *
+
+Graham Knop <haarg@haarg.org>
 
 =item *
 
