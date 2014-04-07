@@ -32,7 +32,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: '0.007'
+    version: '0.008'
 requires:
   Dist::Zilla::Role::BeforeBuild: '0'
   Dist::Zilla::Role::MetaProvider: '0'
@@ -55,7 +55,7 @@ requires:
 resources:
   bugtracker: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
   repository: git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git
-version: '0.007'
+version: '0.008'
 x_Dist_Zilla:
   perl:
     version: '5.018002'

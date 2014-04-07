@@ -11,8 +11,8 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 BEGIN {
   $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
 }
-# git description: 0.006-6-g070d025
-$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.007';
+# git description: 0.007-2-g8392607
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.008';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -158,7 +158,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.007 of Dist::Zilla::Plugin::ContributorsFromGit - released April 03, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.008 of Dist::Zilla::Plugin::ContributorsFromGit - released April 07, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
