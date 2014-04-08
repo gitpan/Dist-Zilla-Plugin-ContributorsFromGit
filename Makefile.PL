@@ -7,6 +7,8 @@ use 5.010000;
 
 use ExtUtils::MakeMaker 6.30;
 
+use File::ShareDir::Install;
+install_share dist => "share";
 
 
 my %WriteMakefileArgs = (
@@ -14,7 +16,8 @@ my %WriteMakefileArgs = (
   "AUTHOR" => "Chris Weyl <cweyl\@alumni.drew.edu>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30"
+    "ExtUtils::MakeMaker" => "6.30",
+    "File::ShareDir::Install" => "0.03"
   },
   "DISTNAME" => "Dist-Zilla-Plugin-ContributorsFromGit",
   "EXE_FILES" => [],
@@ -26,17 +29,17 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::RegisterStash" => 0,
     "Dist::Zilla::Stash::PodWeaver" => 0,
     "Encode" => 0,
+    "File::ShareDir::ProjectDistDir" => 0,
     "File::Which" => 0,
     "IPC::System::Simple" => 0,
     "List::AllUtils" => 0,
-    "Moose" => 0,
-    "MooseX::AttributeShortcuts" => "0.015",
-    "MooseX::Types::Moose" => 0,
-    "Syntax::Keyword::Junction" => 0,
+    "Path::Class" => 0,
+    "Reindeer" => 0,
+    "YAML::Tiny" => 0,
     "aliased" => 0,
     "autobox::Core" => 0,
+    "autobox::Junctions" => 0,
     "autodie" => 0,
-    "namespace::autoclean" => 0,
     "utf8" => 0
   },
   "TEST_REQUIRES" => {
@@ -45,7 +48,6 @@ my %WriteMakefileArgs = (
     "File::chdir" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Path::Class" => 0,
     "Test::CheckDeps" => "0.010",
     "Test::DZil" => 0,
     "Test::More" => "0.94",
@@ -54,7 +56,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.008",
+  "VERSION" => "0.009",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -68,6 +70,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Role::RegisterStash" => 0,
   "Dist::Zilla::Stash::PodWeaver" => 0,
   "Encode" => 0,
+  "File::ShareDir::ProjectDistDir" => 0,
   "File::Spec" => 0,
   "File::Which" => 0,
   "File::chdir" => 0,
@@ -75,20 +78,18 @@ my %FallbackPrereqs = (
   "IPC::Open3" => 0,
   "IPC::System::Simple" => 0,
   "List::AllUtils" => 0,
-  "Moose" => 0,
-  "MooseX::AttributeShortcuts" => "0.015",
-  "MooseX::Types::Moose" => 0,
   "Path::Class" => 0,
-  "Syntax::Keyword::Junction" => 0,
+  "Reindeer" => 0,
   "Test::CheckDeps" => "0.010",
   "Test::DZil" => 0,
   "Test::More" => "0.94",
   "Test::TempDir" => 0,
+  "YAML::Tiny" => 0,
   "aliased" => 0,
   "autobox::Core" => 0,
+  "autobox::Junctions" => 0,
   "autodie" => 0,
   "lib" => 0,
-  "namespace::autoclean" => 0,
   "strict" => 0,
   "utf8" => 0,
   "warnings" => 0
@@ -106,5 +107,10 @@ delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
 
 WriteMakefile(%WriteMakefileArgs);
 
+{
+package
+MY;
+use File::ShareDir::Install qw(postamble);
+}
 
 

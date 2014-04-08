@@ -22,7 +22,8 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.30"
+            "ExtUtils::MakeMaker" : "6.30",
+            "File::ShareDir::Install" : "0.03"
          }
       },
       "develop" : {
@@ -42,17 +43,17 @@
             "Dist::Zilla::Role::RegisterStash" : "0",
             "Dist::Zilla::Stash::PodWeaver" : "0",
             "Encode" : "0",
+            "File::ShareDir::ProjectDistDir" : "0",
             "File::Which" : "0",
             "IPC::System::Simple" : "0",
             "List::AllUtils" : "0",
-            "Moose" : "0",
-            "MooseX::AttributeShortcuts" : "0.015",
-            "MooseX::Types::Moose" : "0",
-            "Syntax::Keyword::Junction" : "0",
+            "Path::Class" : "0",
+            "Reindeer" : "0",
+            "YAML::Tiny" : "0",
             "aliased" : "0",
             "autobox::Core" : "0",
+            "autobox::Junctions" : "0",
             "autodie" : "0",
-            "namespace::autoclean" : "0",
             "perl" : "v5.10.0",
             "utf8" : "0"
          }
@@ -64,7 +65,6 @@
             "File::chdir" : "0",
             "IO::Handle" : "0",
             "IPC::Open3" : "0",
-            "Path::Class" : "0",
             "Test::CheckDeps" : "0.010",
             "Test::DZil" : "0",
             "Test::More" : "0.94",
@@ -78,7 +78,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::ContributorsFromGit" : {
          "file" : "lib/Dist/Zilla/Plugin/ContributorsFromGit.pm",
-         "version" : "0.008"
+         "version" : "0.009"
       }
    },
    "release_status" : "stable",
@@ -92,7 +92,7 @@
          "web" : "https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit"
       }
    },
-   "version" : "0.008",
+   "version" : "0.009",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018002"

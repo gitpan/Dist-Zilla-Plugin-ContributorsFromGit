@@ -12,6 +12,7 @@ SIGNATURE
 cpanfile
 dist.ini
 lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
+share/author-emails.yaml
 t/00-check-deps.t
 t/00-compile.t
 t/000-report-versions-tiny.t
