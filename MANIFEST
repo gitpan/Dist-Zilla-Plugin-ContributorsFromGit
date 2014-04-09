@@ -18,6 +18,7 @@ t/00-compile.t
 t/000-report-versions-tiny.t
 t/author-map.t
 t/basic.t
+t/validate-public-interface.t
 xt/author/pod-spell.t
 xt/release/consistent-version.t
 xt/release/eol.t

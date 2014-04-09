@@ -50,13 +50,14 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::CheckDeps" => "0.010",
     "Test::DZil" => 0,
+    "Test::Moose::More" => 0,
     "Test::More" => "0.94",
     "Test::TempDir" => 0,
     "lib" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.009",
+  "VERSION" => "0.010",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -82,6 +83,7 @@ my %FallbackPrereqs = (
   "Reindeer" => 0,
   "Test::CheckDeps" => "0.010",
   "Test::DZil" => 0,
+  "Test::Moose::More" => 0,
   "Test::More" => "0.94",
   "Test::TempDir" => 0,
   "YAML::Tiny" => 0,

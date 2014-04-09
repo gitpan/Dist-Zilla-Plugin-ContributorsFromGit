@@ -68,6 +68,7 @@ eval { $v .= pmver('Path::Class','any version') };
 eval { $v .= pmver('Reindeer','any version') };
 eval { $v .= pmver('Test::CheckDeps','0.010') };
 eval { $v .= pmver('Test::DZil','any version') };
+eval { $v .= pmver('Test::Moose::More','any version') };
 eval { $v .= pmver('Test::More','0.94') };
 eval { $v .= pmver('Test::TempDir','any version') };
 eval { $v .= pmver('YAML::Tiny','any version') };
