@@ -34,7 +34,7 @@ my %WriteMakefileArgs = (
     "IPC::System::Simple" => 0,
     "List::AllUtils" => 0,
     "Path::Class" => 0,
-    "Reindeer" => 0,
+    "Reindeer" => "0.017",
     "YAML::Tiny" => 0,
     "aliased" => 0,
     "autobox::Core" => 0,
@@ -57,7 +57,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.010",
+  "VERSION" => "0.011",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -80,7 +80,7 @@ my %FallbackPrereqs = (
   "IPC::System::Simple" => 0,
   "List::AllUtils" => 0,
   "Path::Class" => 0,
-  "Reindeer" => 0,
+  "Reindeer" => "0.017",
   "Test::CheckDeps" => "0.010",
   "Test::DZil" => 0,
   "Test::Moose::More" => 0,

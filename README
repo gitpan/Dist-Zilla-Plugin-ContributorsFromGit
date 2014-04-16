@@ -3,8 +3,8 @@ NAME
     POD from the list of git authors
 
 VERSION
-    This document describes version 0.010 of
-    Dist::Zilla::Plugin::ContributorsFromGit - released April 08, 2014 as
+    This document describes version 0.011 of
+    Dist::Zilla::Plugin::ContributorsFromGit - released April 15, 2014 as
     part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 SYNOPSIS
@@ -84,9 +84,10 @@ SEE ALSO
 
 SOURCE
     The development version is on github at
-    <http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit> and
-    may be cloned from
-    <git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+    <http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGi
+    t> and may be cloned from
+    <git://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit
+    .git>
 
 BUGS
     Please report any bugs or feature requests on the bugtracker website

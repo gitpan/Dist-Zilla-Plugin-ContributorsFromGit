@@ -11,15 +11,15 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 BEGIN {
   $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
 }
-# git description: 0.009-11-gb15a4e1
-$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.010';
+# git description: 0.010-3-g7653485
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.011';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
 use utf8;
 use v5.10;
 
-use Reindeer;
+use Reindeer 0.017;
 use Encode qw(decode_utf8);
 use autobox::Core;
 use autobox::Junctions;
@@ -152,7 +152,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.010 of Dist::Zilla::Plugin::ContributorsFromGit - released April 08, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.011 of Dist::Zilla::Plugin::ContributorsFromGit - released April 15, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -249,8 +249,8 @@ L<Dist::Zilla::Stash::PodWeaver>
 
 =head1 SOURCE
 
-The development version is on github at L<http://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
-and may be cloned from L<git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
+The development version is on github at L<http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit>
+and may be cloned from L<git://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git>
 
 =head1 BUGS
 

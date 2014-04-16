@@ -33,7 +33,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: '0.010'
+    version: '0.011'
 requires:
   Dist::Zilla::Role::BeforeBuild: '0'
   Dist::Zilla::Role::MetaProvider: '0'
@@ -45,7 +45,7 @@ requires:
   IPC::System::Simple: '0'
   List::AllUtils: '0'
   Path::Class: '0'
-  Reindeer: '0'
+  Reindeer: '0.017'
   YAML::Tiny: '0'
   aliased: '0'
   autobox::Core: '0'
@@ -55,8 +55,9 @@ requires:
   utf8: '0'
 resources:
   bugtracker: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
-  repository: git://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git
-version: '0.010'
+  homepage: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit
+  repository: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git
+version: '0.011'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
@@ -86,15 +87,15 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::CorrectBranch'
-      version: '0.009'
+      version: '0.011'
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::Fixups
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::Fixups'
-      version: '0.009'
+      version: '0.011'
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::MergeConflicts'
-      version: '0.009'
+      version: '0.011'
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@RSRCHBOY/GatherDir'
@@ -271,9 +272,9 @@ x_Dist_Zilla:
       name: '@RSRCHBOY/MetaProvides::Package'
       version: '2.000001'
     -
-      class: Dist::Zilla::Plugin::GitHub::Meta
-      name: '@RSRCHBOY/GitHub::Meta'
-      version: '0.36'
+      class: Dist::Zilla::Plugin::GithubMeta
+      name: '@RSRCHBOY/GithubMeta'
+      version: '0.42'
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@RSRCHBOY/TestRelease'
@@ -310,6 +311,14 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Test::CheckDeps
       name: '@RSRCHBOY/Test::CheckDeps'
       version: '0.012'
+    -
+      class: Dist::Zilla::Plugin::CheckSelfDependency
+      config:
+        Dist::Zilla::Plugin::CheckSelfDependency:
+          finder:
+            - ':InstallModules'
+      name: '@RSRCHBOY/CheckSelfDependency'
+      version: '0.007'
     -
       class: Dist::Zilla::Plugin::Travis::ConfigForReleaseBranch
       name: '@RSRCHBOY/Travis::ConfigForReleaseBranch'
@@ -353,7 +362,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@RSRCHBOY/GitHub::Update'
-      version: '0.36'
+      version: v0.36_01
     -
       class: Dist::Zilla::Plugin::ArchiveRelease
       name: '@RSRCHBOY/ArchiveRelease'
@@ -427,15 +436,15 @@ x_Dist_Zilla:
             -
               class: Pod::Weaver::Section::RSRCHBOY::RoleParameters
               name: 'ROLE PARAMETERS'
-              version: '0.044'
+              version: '0.046'
             -
               class: Pod::Weaver::Section::RSRCHBOY::RequiredAttributes
               name: 'REQUIRED ATTRIBUTES'
-              version: '0.044'
+              version: '0.046'
             -
               class: Pod::Weaver::Section::RSRCHBOY::LazyAttributes
               name: 'LAZY ATTRIBUTES'
-              version: '0.044'
+              version: '0.046'
             -
               class: Pod::Weaver::Section::Collect
               name: ATTRIBUTES
