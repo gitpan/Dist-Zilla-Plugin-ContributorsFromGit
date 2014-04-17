@@ -15,17 +15,17 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 55ac697642a18dd7d974736a3d06fd531aa82382 .travis.yml
-SHA1 ec944f1702936dd28d76adf2abd37632d30e47b5 Changes
+SHA1 a56dba4cba7c815a801032ee0c0abe9d11c90897 Changes
 SHA1 a5897e9d2b28ebe7546896cde1e9a35352e03ca5 INSTALL
 SHA1 bf2d713ceca5b8ad3d680ed15baba1b89df7e149 LICENSE
 SHA1 e12fe0fae72dd1cf7db3bdeb1e923c726e3292ea MANIFEST
-SHA1 306a2f64752006af8b39befd6343faf558dd91b4 META.json
-SHA1 6cd02efe43bbfb0aa86e2cbdd561061f7cc9d759 META.yml
-SHA1 e47d85ad0a4fb0c4633ffd79fa64345568242c95 Makefile.PL
-SHA1 3c3fd0bdc87694a630b1e1cc265d8add851f6331 README
+SHA1 5de05110781b3af537f12741ef4171e5c0319cb5 META.json
+SHA1 d9bebfd669348bcdc0ba9b6bbeea677c59d3eb40 META.yml
+SHA1 bdbc29ee3a56c3cf84a488d2c1419fbb6d4201eb Makefile.PL
+SHA1 7c54886c29c10e341066d59c33a90d0d8b31b7fe README
 SHA1 0410a309b6eca2e6893fe13500eb96c82b9bb629 cpanfile
 SHA1 1052655d50462dceda6fbc4ef34dce511533c853 dist.ini
-SHA1 c7e8513b6dc0fdc0982f37de001502a28236b76b lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
+SHA1 36d76beb92aa38512a66eda50b1bcfa4405055ec lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
 SHA1 c65af544a24be8580e12c39c04dbaff68f506433 share/author-emails.yaml
 SHA1 c522c3928158e64bd97d34d20cbfe0b5305a7eb2 t/00-check-deps.t
 SHA1 8d5b34431be0b676c2be70165e996e3cd2712a62 t/00-compile.t
@@ -39,18 +39,18 @@ SHA1 b3915eaac65e18e6a048b34a4b873beccab326b4 xt/release/eol.t
 SHA1 4c1835396aeae4efd599f1cc84014ee3980d9884 xt/release/has-version.t
 SHA1 3bbc4a90c2af61c5a0cfd291eb3d13288d7099d6 xt/release/minimum-version.t
 SHA1 b61e177e54a613cd9c9a2182aa895cd251049ecf xt/release/no-smart-comments.t
-SHA1 6c91bebc057c22b6f98318f65c808aef8287fb06 xt/release/no-tabs.t
+SHA1 1791dc2ff43c46431d775d9bf4692d516391e026 xt/release/no-tabs.t
 SHA1 bc232867aba0a7a5597cb3b313a6c7c5b9759582 xt/release/pod-coverage.t
 SHA1 a85d9cd82138d7c12ca77c57bf3dbfc4c90092b3 xt/release/pod-linkcheck.t
 SHA1 e4eda57368cd35ee82313e8983fa6af121cbc247 xt/release/pod-syntax.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.14 (GNU/Linux)
 
-iQEcBAEBAgAGBQJTThRrAAoJEOd5N1CvIgQk7jMIAL6VB8ToeT4lZJWqnvDYRWhX
-OcMtlhlSTg8fazK2By3Fi5EUj2kxOriBsC83BUPOtSoN/uNVn8CvsEliIA9uPWN8
-OTRIHlb9Nke2EHjmtctaDBTpntF8EkyrmAc4eama/VI23NRQbP/Ak7jm8F4N5UT5
-bMlq1pjtvgK/6uSDhuWo1GeQ5c42nq96pQIkPJg+VYAG2UZkjcEG4kSDBz77Gqnv
-qW1zxccedbIDLFqenypaf+Z1QlCIcmXCvPnBsoT8pnhoxAZFGGdTGb41N9BFI1DE
-N/XbrqWWBhDqpLCNkiC2RYIxyGRoRWAM2z/3F+PngA7R8sYwp1ucyq29lWEj3DU=
-=2TV0
+iQEcBAEBAgAGBQJTUEtzAAoJEOd5N1CvIgQkC34H/Rh+9JSZZxBLgZd0jRSRO3mi
+9NRnyDl4LnBZDguXHCbEkB9DgHEn1W+Yc46snDdTysEDPmeXTe++y5vT12IbHntt
+DvCJUBUuRccj2oQ1J+n9McNCE304q6n3G2yKLGfOGMQV2BtkBGmBxK4L+bkZ3Zua
+X9WMKEp53iNixaWFdSGh852+1zqtQcbqiqu9Wx27Jo0iV5mFitDvxi7EyE2yEZwm
+vixLvboALgYqqILqoedKbqJOdNTW2DyP6cwY0cevGKOedQY6MwJfaq/XK5gWV24w
+/CuHHITi4RY+s32lVao6twRxSsfdhj5q9N799kCvoUo6QzOZl4ZjVaHahLYmBVQ=
+=rBd0
 -----END PGP SIGNATURE-----

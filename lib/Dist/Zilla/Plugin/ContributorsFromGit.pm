@@ -11,8 +11,8 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 BEGIN {
   $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
 }
-# git description: 0.010-3-g7653485
-$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.011';
+# git description: 0.011-7-g11b50fe
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.012';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -24,7 +24,7 @@ use Encode qw(decode_utf8);
 use autobox::Core;
 use autobox::Junctions;
 use File::Which 'which';
-use List::AllUtils qw{ apply max uniq };
+use List::AllUtils qw{ max uniq };
 use File::ShareDir::ProjectDistDir;
 use YAML::Tiny;
 use Path::Class;
@@ -57,7 +57,7 @@ has _contributor_list => (
             `git shortlog -s -e`
             ;
 
-        return \@contributors;
+        return [ sort @contributors ];
     },
 );
 
@@ -90,6 +90,25 @@ has _contributor_emails => (
     },
 );
 
+has _stopwords => (
+    is => 'lazy',
+    isa => ArrayRef[Str],
+    init_arg => undef,
+
+    builder => sub {
+        my $self = shift @_;
+
+        # break contributor names into a stopwords-suitable list
+        my @stopwords =
+            map { (split / /)      }
+            map { /^(.*) <.*$/; $1 }
+            $self->_contributor_list->flatten
+            ;
+
+        return [ uniq sort @stopwords ];
+    },
+);
+
 sub before_build {
     my $self = shift @_;
 
@@ -102,27 +121,31 @@ sub before_build {
     # XXX we should also check here that we're in a git repo, but I'm going to
     # leave that for the git stash (when it's not vaporware)
 
-    ### get our stash, config...
+    ### get our stash...
     my $stash   = $self->zilla->stash_named('%PodWeaver');
     do { $stash = PodWeaver->new; $self->_register_stash('%PodWeaver', $stash) }
         unless defined $stash;
-    my $config       = $stash->_config;
-    my @contributors = $self->_contributor_list->flatten;
 
-    my $i = 0;
-    do { $config->{"Contributors.contributors[$i]"} = $_; $i++ }
-        for @contributors;
+    ### ...and config...
+    my $config = $stash->_config;
 
-    # add contributor names as stopwords
-    $i = 0;
-    my @stopwords = uniq
-        apply { split / /        }
-        apply { /^(.*) <.*$/; $1 }
-        @contributors
-        ;
-    do { $config->{"StopWords.include[$i]"} = $_; $i++ }
-        for @stopwords;
+    # helper sub to keep us from clobbering existing values, until (and if):
+    # https://github.com/rwstauner/Dist-Zilla-Role-Stash-Plugins/pull/1
+    my $_append = sub {
+        my ($key, @values) = @_;
 
+        my $i = -1;
+        do { $i++ } while exists $config->{$key."[$i]"};
+        do { $config->{$key."[$i]"} = $_; $i++ }
+            for @values;
+
+        return;
+    };
+
+    $_append->('Contributors.contributors' => $self->_contributor_list->flatten);
+    $_append->('StopWords.include'         => $self->_stopwords->flatten);
+
+    ### $config
     return;
 }
 
@@ -141,10 +164,8 @@ __END__
 
 =encoding UTF-8
 
-=for :stopwords Chris Weyl David Golden Graham Knop Randy Stauner Tatsuhiko Miyagawa
-<dagolden@cpan.org> <haarg@haarg.org> <randy@magnificent-tears.com>
-<miyagawa@bulknews.net> zilla BeforeBuild metacpan shortlog committer
-mailmap
+=for :stopwords Chris Weyl David Golden Graham Knop Randy Stauner Tatsuhiko Miyagawa zilla
+BeforeBuild metacpan shortlog committer mailmap
 
 =head1 NAME
 
@@ -152,7 +173,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.011 of Dist::Zilla::Plugin::ContributorsFromGit - released April 15, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.012 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 

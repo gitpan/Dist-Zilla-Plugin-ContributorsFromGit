@@ -33,7 +33,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: '0.011'
+    version: '0.012'
 requires:
   Dist::Zilla::Role::BeforeBuild: '0'
   Dist::Zilla::Role::MetaProvider: '0'
@@ -57,7 +57,7 @@ resources:
   bugtracker: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
   homepage: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit
   repository: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git
-version: '0.011'
+version: '0.012'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
@@ -78,22 +78,38 @@ x_Dist_Zilla:
       version: '5.015'
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
+      config:
+        Dist::Zilla::Plugin::Git::NextVersion:
+          first_version: '0.001'
+          version_by_branch: '0'
+          version_regexp: (?^:^(\d.\d+(_\d\d)?)(-TRIAL|)$)
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::NextVersion'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::ContributorsFromGit
       name: '@RSRCHBOY/ContributorsFromGit'
       version: ~
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch
+      config:
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::CorrectBranch'
       version: '0.011'
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::Fixups
+      config:
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::Fixups'
       version: '0.011'
     -
       class: Dist::Zilla::Plugin::Git::CheckFor::MergeConflicts
+      config:
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/@Git::CheckFor/Git::CheckFor::MergeConflicts'
       version: '0.011'
     -
@@ -192,8 +208,9 @@ x_Dist_Zilla:
             - ':InstallModules'
           script_finder:
             - ':ExecFiles'
+            - ':TestFiles'
       name: '@RSRCHBOY/NoTabsTests'
-      version: '0.06'
+      version: '0.07'
     -
       class: Dist::Zilla::Plugin::EOLTests
       name: '@RSRCHBOY/EOLTests'
@@ -301,12 +318,48 @@ x_Dist_Zilla:
       version: 0.1.2
     -
       class: Dist::Zilla::Plugin::Git::Check
+      config:
+        Dist::Zilla::Plugin::Git::Check:
+          untracked_files: die
+        Dist::Zilla::Role::Git::DirtyFiles:
+          allow_dirty:
+            - .gitignore
+            - .travis.yml
+            - Changes
+            - README.mkdn
+            - dist.ini
+            - weaver.ini
+            - LICENSE
+            - cpanfile
+          allow_dirty_match: []
+          changelog: Changes
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::Check'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::Git::Commit
+      config:
+        Dist::Zilla::Plugin::Git::Commit:
+          add_files_in: []
+          commit_msg: v%v%n%n%c
+          time_zone: local
+        Dist::Zilla::Role::Git::DirtyFiles:
+          allow_dirty:
+            - .gitignore
+            - .travis.yml
+            - Changes
+            - README.mkdn
+            - dist.ini
+            - weaver.ini
+            - LICENSE
+            - cpanfile
+          allow_dirty_match: []
+          changelog: Changes
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::Commit'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::Test::CheckDeps
       name: '@RSRCHBOY/Test::CheckDeps'
@@ -329,20 +382,58 @@ x_Dist_Zilla:
       version: 0.2.0
     -
       class: Dist::Zilla::Plugin::Git::Tag
+      config:
+        Dist::Zilla::Plugin::Git::Tag:
+          branch: ~
+          signed: '1'
+          tag: '0.012'
+          tag_format: '%v'
+          tag_message: v%v
+          time_zone: local
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::Tag'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
+      config:
+        Dist::Zilla::Plugin::Git::CommitBuild:
+          branch: build/%b
+          build_root: ~
+          message: 'Build results of %h (on %b)'
+          multiple_inheritance: 0
+          release_branch: ~
+          release_message: 'Build results of %h (on %b)'
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::CommitBuild::Build'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
+      config:
+        Dist::Zilla::Plugin::Git::CommitBuild:
+          branch: build/%b
+          build_root: ~
+          message: 'Build results of %h (on %b)'
+          multiple_inheritance: 1
+          release_branch: release/cpan
+          release_message: 'Full build of CPAN release %v%t'
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::CommitBuild::Release'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::Git::Push
+      config:
+        Dist::Zilla::Plugin::Git::Push:
+          push_to:
+            - origin
+            - 'origin refs/heads/release/cpan:refs/heads/release/cpan'
+          remotes_must_exist: 1
+        Dist::Zilla::Role::Git::Repo:
+          repo_root: .
       name: '@RSRCHBOY/Git::Push'
-      version: '2.020'
+      version: '2.021'
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@RSRCHBOY/UploadToCPAN'
@@ -362,7 +453,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GitHub::Update
       name: '@RSRCHBOY/GitHub::Update'
-      version: v0.36_01
+      version: '0.36'
     -
       class: Dist::Zilla::Plugin::ArchiveRelease
       name: '@RSRCHBOY/ArchiveRelease'

@@ -3,8 +3,8 @@ NAME
     POD from the list of git authors
 
 VERSION
-    This document describes version 0.011 of
-    Dist::Zilla::Plugin::ContributorsFromGit - released April 15, 2014 as
+    This document describes version 0.012 of
+    Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as
     part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 SYNOPSIS
