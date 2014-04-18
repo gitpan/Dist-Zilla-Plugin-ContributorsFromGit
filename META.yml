@@ -33,8 +33,9 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: '0.012'
+    version: '0.013'
 requires:
+  Dist::Zilla: '5.013'
   Dist::Zilla::Role::BeforeBuild: '0'
   Dist::Zilla::Role::MetaProvider: '0'
   Dist::Zilla::Role::RegisterStash: '0'
@@ -57,7 +58,7 @@ resources:
   bugtracker: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
   homepage: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit
   repository: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git
-version: '0.012'
+version: '0.013'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
@@ -201,7 +202,7 @@ x_Dist_Zilla:
       name: '@RSRCHBOY/PodSyntaxTests'
       version: '5.015'
     -
-      class: Dist::Zilla::Plugin::NoTabsTests
+      class: Dist::Zilla::Plugin::Test::NoTabs
       config:
         Dist::Zilla::Plugin::Test::NoTabs:
           module_finder:
@@ -209,7 +210,7 @@ x_Dist_Zilla:
           script_finder:
             - ':ExecFiles'
             - ':TestFiles'
-      name: '@RSRCHBOY/NoTabsTests'
+      name: '@RSRCHBOY/Test::NoTabs'
       version: '0.07'
     -
       class: Dist::Zilla::Plugin::EOLTests
@@ -386,7 +387,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: '1'
-          tag: '0.012'
+          tag: '0.013'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local
@@ -527,15 +528,15 @@ x_Dist_Zilla:
             -
               class: Pod::Weaver::Section::RSRCHBOY::RoleParameters
               name: 'ROLE PARAMETERS'
-              version: '0.046'
+              version: '0.047'
             -
               class: Pod::Weaver::Section::RSRCHBOY::RequiredAttributes
               name: 'REQUIRED ATTRIBUTES'
-              version: '0.046'
+              version: '0.047'
             -
               class: Pod::Weaver::Section::RSRCHBOY::LazyAttributes
               name: 'LAZY ATTRIBUTES'
-              version: '0.046'
+              version: '0.047'
             -
               class: Pod::Weaver::Section::Collect
               name: ATTRIBUTES
@@ -597,11 +598,19 @@ x_Dist_Zilla:
               name: '@RSRCHBOY/List'
               version: '4.006'
             -
-              class: Pod::Weaver::Plugin::Encoding
-              name: '@RSRCHBOY/Encoding'
-              version: '0.02'
+              class: Pod::Weaver::Plugin::SingleEncoding
+              name: '@RSRCHBOY/SingleEncoding'
+              version: '4.006'
       name: '@RSRCHBOY/PodWeaver'
       version: '4.005'
+    -
+      class: Dist::Zilla::Plugin::Prereqs
+      config:
+        Dist::Zilla::Plugin::Prereqs:
+          phase: runtime
+          type: requires
+      name: Prereqs
+      version: '5.015'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
@@ -645,6 +654,7 @@ x_Dist_Zilla:
     version: '5.015'
 x_authority: cpan:RSRCHBOY
 x_contributors:
+  - 'Brendan Byrd <Perl@ResonatorSoft.org>'
   - 'David Golden <dagolden@cpan.org>'
   - 'Graham Knop <haarg@haarg.org>'
   - 'Randy Stauner <randy@magnificent-tears.com>'

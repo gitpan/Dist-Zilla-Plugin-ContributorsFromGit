@@ -49,6 +49,7 @@ sub pmver {
 }
 
 eval { $v .= pmver('Directory::Scratch','any version') };
+eval { $v .= pmver('Dist::Zilla','5.013') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeBuild','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::MetaProvider','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::RegisterStash','any version') };

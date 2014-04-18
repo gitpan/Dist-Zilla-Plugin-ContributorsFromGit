@@ -3,7 +3,7 @@ NAME
     POD from the list of git authors
 
 VERSION
-    This document describes version 0.012 of
+    This document describes version 0.013 of
     Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as
     part of Dist-Zilla-Plugin-ContributorsFromGit.
 
@@ -42,6 +42,12 @@ OVERVIEW
     If you have duplicate contributors because of differences in committer
     name or email you can use a ".mailmap" file to canonicalize contributor
     names and emails. See git help shortlog for details.
+
+  Pod::Weaver::Section::Contributors is OPTIONAL
+    Note that using the Pod::Weaver::Section::Contributors section is in no
+    way mandated or necessitated by this package; if you wish to use it you
+    must include the Contributors section in your Pod::Weaver configuration
+    in the traditional fashion.
 
 METACPAN CONTRIBUTOR MATCHING
     MetaCPAN <http://metacpan.org> will attempt to match a contributor
@@ -82,6 +88,9 @@ SEE ALSO
 
     *   Dist::Zilla::Stash::PodWeaver
 
+    *   <http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-gi
+        ve-credit-to-contributors/>
+
 SOURCE
     The development version is on github at
     <http://https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGi
@@ -100,6 +109,8 @@ AUTHOR
     Chris Weyl <cweyl@alumni.drew.edu>
 
 CONTRIBUTORS
+    *   Brendan Byrd <Perl@ResonatorSoft.org>
+
     *   David Golden <dagolden@cpan.org>
 
     *   Graham Knop <haarg@haarg.org>

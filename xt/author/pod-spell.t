@@ -25,6 +25,9 @@ coderef
 Chris
 Weyl
 cweyl
+Brendan
+Byrd
+Perl
 David
 Golden
 dagolden

@@ -24,6 +24,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "lgpl",
   "NAME" => "Dist::Zilla::Plugin::ContributorsFromGit",
   "PREREQ_PM" => {
+    "Dist::Zilla" => "5.013",
     "Dist::Zilla::Role::BeforeBuild" => 0,
     "Dist::Zilla::Role::MetaProvider" => 0,
     "Dist::Zilla::Role::RegisterStash" => 0,
@@ -57,7 +58,7 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.012",
+  "VERSION" => "0.013",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -66,6 +67,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Directory::Scratch" => 0,
+  "Dist::Zilla" => "5.013",
   "Dist::Zilla::Role::BeforeBuild" => 0,
   "Dist::Zilla::Role::MetaProvider" => 0,
   "Dist::Zilla::Role::RegisterStash" => 0,

@@ -11,8 +11,8 @@ package Dist::Zilla::Plugin::ContributorsFromGit;
 BEGIN {
   $Dist::Zilla::Plugin::ContributorsFromGit::AUTHORITY = 'cpan:RSRCHBOY';
 }
-# git description: 0.011-7-g11b50fe
-$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.012';
+# git description: 0.012-6-g9cc9632
+$Dist::Zilla::Plugin::ContributorsFromGit::VERSION = '0.013';
 
 # ABSTRACT: Populate your 'CONTRIBUTORS' POD from the list of git authors
 
@@ -51,7 +51,7 @@ has _contributor_list => (
         my @contributors = uniq
             map  { $self->_contributor_emails->{$_} // $_ }
             grep { $_ ne 'Your Name <you@example.com>'   }
-            grep { @authors->none eq $_                  }
+            grep { [ map { lc } @authors ]->none eq lc   }
             map  { decode_utf8($_)                       }
             map  { chomp; s/^\s*\d+\s*//; $_             }
             `git shortlog -s -e`
@@ -143,7 +143,7 @@ sub before_build {
     };
 
     $_append->('Contributors.contributors' => $self->_contributor_list->flatten);
-    $_append->('StopWords.include'         => $self->_stopwords->flatten);
+    $_append->('-StopWords.include'        => $self->_stopwords->flatten);
 
     ### $config
     return;
@@ -164,8 +164,8 @@ __END__
 
 =encoding UTF-8
 
-=for :stopwords Chris Weyl David Golden Graham Knop Randy Stauner Tatsuhiko Miyagawa zilla
-BeforeBuild metacpan shortlog committer mailmap
+=for :stopwords Chris Weyl Brendan Byrd David Golden Graham Knop Randy Stauner Tatsuhiko
+Miyagawa zilla BeforeBuild metacpan shortlog committer mailmap
 
 =head1 NAME
 
@@ -173,7 +173,7 @@ Dist::Zilla::Plugin::ContributorsFromGit - Populate your 'CONTRIBUTORS' POD from
 
 =head1 VERSION
 
-This document describes version 0.012 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
+This document describes version 0.013 of Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 =head1 SYNOPSIS
 
@@ -217,6 +217,13 @@ C<x_contributors> key.  (e.g. in C<META.yml>, C<META.json>, etc)
 If you have duplicate contributors because of differences in committer name
 or email you can use a C<.mailmap> file to canonicalize contributor names
 and emails.  See L<git help shortlog|git-shortlog(1)> for details.
+
+=head2 Pod::Weaver::Section::Contributors is OPTIONAL
+
+Note that using the L<Pod::Weaver::Section::Contributors> section is in no way
+mandated or necessitated by this package; if you wish to use it you must
+include the Contributors section in your L<Pod::Weaver> configuration in the
+traditional fashion.
 
 =for Pod::Coverage before_build metadata
 
@@ -266,6 +273,10 @@ L<Pod::Weaver::Section::Contributors>
 
 L<Dist::Zilla::Stash::PodWeaver>
 
+=item *
+
+L<http://www.dagolden.com/index.php/1921/how-im-using-distzilla-to-give-credit-to-contributors/>
+
 =back
 
 =head1 SOURCE
@@ -289,6 +300,10 @@ Chris Weyl <cweyl@alumni.drew.edu>
 =head1 CONTRIBUTORS
 
 =over 4
+
+=item *
+
+Brendan Byrd <Perl@ResonatorSoft.org>
 
 =item *
 
