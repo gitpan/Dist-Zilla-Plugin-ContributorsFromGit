@@ -18,9 +18,9 @@ build_requires:
   warnings: '0'
 configure_requires:
   ExtUtils::MakeMaker: '6.30'
-  File::ShareDir::Install: '0.03'
+  File::ShareDir::Install: '0.06'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.015, CPAN::Meta::Converter version 2.140640'
+generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.140640'
 license: lgpl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -33,7 +33,7 @@ no_index:
 provides:
   Dist::Zilla::Plugin::ContributorsFromGit:
     file: lib/Dist/Zilla/Plugin/ContributorsFromGit.pm
-    version: '0.013'
+    version: '0.014'
 requires:
   Dist::Zilla: '5.013'
   Dist::Zilla::Role::BeforeBuild: '0'
@@ -58,10 +58,10 @@ resources:
   bugtracker: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit/issues
   homepage: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit
   repository: https://github.com/RsrchBoy/Dist-Zilla-Plugin-ContributorsFromGit.git
-version: '0.013'
+version: '0.014'
 x_Dist_Zilla:
   perl:
-    version: '5.018002'
+    version: '5.020000'
   plugins:
     -
       class: Dist::Zilla::Plugin::Bootstrap::lib
@@ -76,7 +76,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: '@RSRCHBOY/NextRelease'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       config:
@@ -87,7 +87,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::NextVersion'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::ContributorsFromGit
       name: '@RSRCHBOY/ContributorsFromGit'
@@ -116,7 +116,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@RSRCHBOY/GatherDir'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::PromptIfStale
       config:
@@ -129,11 +129,11 @@ x_Dist_Zilla:
           phase: build
           skip: []
       name: '@RSRCHBOY/PromptIfStale'
-      version: '0.021'
+      version: '0.023'
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@RSRCHBOY/PruneCruft'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::Git::Describe
       name: '@RSRCHBOY/Git::Describe'
@@ -141,26 +141,22 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@RSRCHBOY/ExecDir'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@RSRCHBOY/ShareDir'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::MakeMaker
       config:
         Dist::Zilla::Role::TestRunner:
           default_jobs: 1
       name: '@RSRCHBOY/MakeMaker'
-      version: '5.015'
-    -
-      class: Dist::Zilla::Plugin::InstallGuide
-      name: '@RSRCHBOY/InstallGuide'
-      version: '1.200002'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@RSRCHBOY/Manifest'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::SurgicalPkgVersion
       name: '@RSRCHBOY/SurgicalPkgVersion'
@@ -180,7 +176,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: '@RSRCHBOY/AutoPrereqs'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::Prepender
       name: '@RSRCHBOY/Prepender'
@@ -188,7 +184,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Test::PodSpelling
       name: '@RSRCHBOY/Test::PodSpelling'
-      version: '2.006007'
+      version: '2.006008'
     -
       class: Dist::Zilla::Plugin::ConsistentVersionTest
       name: '@RSRCHBOY/ConsistentVersionTest'
@@ -196,22 +192,21 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PodCoverageTests
       name: '@RSRCHBOY/PodCoverageTests'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@RSRCHBOY/PodSyntaxTests'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::Test::NoTabs
       config:
         Dist::Zilla::Plugin::Test::NoTabs:
-          module_finder:
+          finder:
             - ':InstallModules'
-          script_finder:
             - ':ExecFiles'
             - ':TestFiles'
       name: '@RSRCHBOY/Test::NoTabs'
-      version: '0.07'
+      version: '0.08'
     -
       class: Dist::Zilla::Plugin::EOLTests
       name: '@RSRCHBOY/EOLTests'
@@ -230,7 +225,7 @@ x_Dist_Zilla:
           script_finder:
             - ':ExecFiles'
       name: '@RSRCHBOY/Test::Compile'
-      version: '2.040'
+      version: '2.043'
     -
       class: Dist::Zilla::Plugin::NoSmartCommentsTests
       name: '@RSRCHBOY/NoSmartCommentsTests'
@@ -261,19 +256,19 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@RSRCHBOY/MetaConfig'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@RSRCHBOY/MetaJSON'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@RSRCHBOY/MetaYAML'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::MetaNoIndex
       name: '@RSRCHBOY/MetaNoIndex'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::MetaProvides::Package
       config:
@@ -282,7 +277,7 @@ x_Dist_Zilla:
             -
               class: Dist::Zilla::Plugin::FinderCode
               name: '@RSRCHBOY/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
-              version: '5.015'
+              version: '5.019'
         Dist::Zilla::Role::MetaProvider::Provider:
           inherit_missing: '1'
           inherit_version: '1'
@@ -292,11 +287,11 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::GithubMeta
       name: '@RSRCHBOY/GithubMeta'
-      version: '0.42'
+      version: '0.46'
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@RSRCHBOY/TestRelease'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::CheckChangesHasContent
       name: '@RSRCHBOY/CheckChangesHasContent'
@@ -304,7 +299,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::CheckPrereqsIndexed
       name: '@RSRCHBOY/CheckPrereqsIndexed'
-      version: '0.010'
+      version: '0.012'
     -
       class: Dist::Zilla::Plugin::Git::Remote::Update
       name: '@RSRCHBOY/GitFetchOrigin'
@@ -337,7 +332,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::Check'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::Git::Commit
       config:
@@ -360,7 +355,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::Commit'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::Test::CheckDeps
       name: '@RSRCHBOY/Test::CheckDeps'
@@ -387,14 +382,14 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: '1'
-          tag: '0.013'
+          tag: '0.014'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::Tag'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
       config:
@@ -408,7 +403,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::CommitBuild::Build'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
       config:
@@ -422,7 +417,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::CommitBuild::Release'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::Git::Push
       config:
@@ -434,11 +429,11 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@RSRCHBOY/Git::Push'
-      version: '2.021'
+      version: '2.023'
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@RSRCHBOY/UploadToCPAN'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::Signature
       name: '@RSRCHBOY/Signature'
@@ -462,15 +457,15 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@RSRCHBOY/ConfirmRelease'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::License
       name: '@RSRCHBOY/License'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::CPANFile
       name: '@RSRCHBOY/CPANFile'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::CopyFilesFromBuild
       name: '@RSRCHBOY/CopyFilesFromBuild'
@@ -478,7 +473,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::ReadmeAnyFromPod
       name: '@RSRCHBOY/ReadmeMarkdownInRoot'
-      version: '0.133360'
+      version: '0.141120'
     -
       class: Dist::Zilla::Plugin::PodWeaver
       config:
@@ -528,15 +523,15 @@ x_Dist_Zilla:
             -
               class: Pod::Weaver::Section::RSRCHBOY::RoleParameters
               name: 'ROLE PARAMETERS'
-              version: '0.047'
+              version: '0.050'
             -
               class: Pod::Weaver::Section::RSRCHBOY::RequiredAttributes
               name: 'REQUIRED ATTRIBUTES'
-              version: '0.047'
+              version: '0.050'
             -
               class: Pod::Weaver::Section::RSRCHBOY::LazyAttributes
               name: 'LAZY ATTRIBUTES'
-              version: '0.047'
+              version: '0.050'
             -
               class: Pod::Weaver::Section::Collect
               name: ATTRIBUTES
@@ -582,9 +577,9 @@ x_Dist_Zilla:
               name: '@RSRCHBOY/Bugs'
               version: '4.006'
             -
-              class: Pod::Weaver::Section::Authors
-              name: '@RSRCHBOY/Authors'
-              version: '4.006'
+              class: Pod::Weaver::Section::RSRCHBOY::Authors
+              name: RSRCHBOY::Authors
+              version: '0.050'
             -
               class: Pod::Weaver::Section::Contributors
               name: '@RSRCHBOY/Contributors'
@@ -610,52 +605,53 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: Prereqs
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':AllFiles'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':NoFiles'
-      version: '5.015'
+      version: '5.019'
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: '@RSRCHBOY/MetaProvides::Package/AUTOVIV/:InstallModulesPM'
-      version: '5.015'
+      version: '5.019'
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: '0'
-    version: '5.015'
+    version: '5.019'
 x_authority: cpan:RSRCHBOY
 x_contributors:
   - 'Brendan Byrd <Perl@ResonatorSoft.org>'
   - 'David Golden <dagolden@cpan.org>'
   - 'Graham Knop <haarg@haarg.org>'
+  - 'Mike Greb <mikegrb@cpan.org>'
   - 'Randy Stauner <randy@magnificent-tears.com>'
   - 'Tatsuhiko Miyagawa <miyagawa@bulknews.net>'

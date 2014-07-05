@@ -3,8 +3,8 @@ NAME
     POD from the list of git authors
 
 VERSION
-    This document describes version 0.013 of
-    Dist::Zilla::Plugin::ContributorsFromGit - released April 17, 2014 as
+    This document describes version 0.014 of
+    Dist::Zilla::Plugin::ContributorsFromGit - released July 05, 2014 as
     part of Dist-Zilla-Plugin-ContributorsFromGit.
 
 SYNOPSIS
@@ -108,12 +108,28 @@ BUGS
 AUTHOR
     Chris Weyl <cweyl@alumni.drew.edu>
 
+  I'm a material boy in a material world
+    Please note I do not expect to be gittip'ed or flattr'ed for this work,
+    rather it is simply a very pleasant surprise. I largely create and
+    release works like this because I need them or I find it enjoyable;
+    however, don't let that stop you if you feel like it ;)
+
+    Flattr this
+    <https://flattr.com/submit/auto?user_id=RsrchBoy&url=https%3A%2F%2Fgithu
+    b.com%2FRsrchBoy%2FDist-Zilla-Plugin-ContributorsFromGit&title=RsrchBoy'
+    s%20CPAN%20Dist-Zilla-Plugin-ContributorsFromGit&tags=%22RsrchBoy's%20Di
+    st-Zilla-Plugin-ContributorsFromGit%20in%20the%20CPAN%22>, gittip me
+    <https://www.gittip.com/RsrchBoy/>, or indulge my Amazon Wishlist
+    <http://bit.ly/rsrchboys-wishlist>... If you so desire.
+
 CONTRIBUTORS
     *   Brendan Byrd <Perl@ResonatorSoft.org>
 
     *   David Golden <dagolden@cpan.org>
 
     *   Graham Knop <haarg@haarg.org>
+
+    *   Mike Greb <mikegrb@cpan.org>
 
     *   Randy Stauner <randy@magnificent-tears.com>
 
